@@ -1,0 +1,26 @@
+CREATE TABLE music_store (item TEXT PRIMARY KEY, quantity INTEGER, price INTEGER,rental_available TEXT);
+INSERT INTO music_store VALUES("electric_guitar",500,500,"yes");
+INSERT INTO music_store VALUES("bass_guitar",400,500,"yes");
+INSERT INTO music_store VALUES("instrument_cable",500,15,"yes");
+INSERT INTO music_store VALUES("guitar_strings",700,8,"no");
+INSERT INTO music_store VALUES("drum_kit",30,800,"yes");
+INSERT INTO music_store VALUES("drum_sticks",400,12,"no");
+INSERT INTO music_store VALUES("drum_head",100,20,"no");
+INSERT INTO music_store VALUES("keyboard",60,600,"yes");
+INSERT INTO music_store VALUES("keyboard_bench",80,50,"yes");
+INSERT INTO music_store VALUES("keyboard_stand",80,90,"yes");
+INSERT INTO music_store VALUES("microphone",50,200,"yes");
+INSERT INTO music_store VALUES("mic_stand",100,30,"yes");
+INSERT INTO music_store VALUES("mic_cable",500,15,"yes");
+INSERT INTO music_store VALUES("disco_ball",20,80,"no");
+INSERT INTO music_store VALUES("fog_machine",20,150,"no");
+
+SELECT * FROM music_store
+ORDER BY price DESC;
+
+SELECT SUM(quantity)
+FROM music_store;
+
+SELECT SUM (quantity) 
+FROM music_store 
+WHERE rental_available = "yes";
