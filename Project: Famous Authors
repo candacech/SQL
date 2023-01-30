@@ -1,0 +1,56 @@
+CREATE TABLE authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    pen_name TEXT,
+    real_name TEXT
+); 
+
+INSERT INTO authors (pen_name, real_name) VALUES ("Mark_Twain", "Samuel Clemens");
+INSERT INTO authors (pen_name, real_name) VALUES ("Dr_Seuss", "Theodor Seuss Geisel");
+INSERT INTO authors (pen_name, real_name) VALUES ("George_Orwell", "Eric Blair");
+INSERT INTO authors (pen_name, real_name) VALUES ("JK_Rowling", "Joanne Rowling");
+INSERT INTO authors (pen_name, real_name) VALUES ("Richard_Bachman", "Stephen_King");
+
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    author_id INTEGER,
+    title TEXT,
+    release_year INTEGER); 
+
+
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (5, "Carrie", 1974);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (1, "Adventures of Tom Sawyer", 1876);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (1, "Adventures of Huckleberry Finn", 1884);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (2, "The Cat in the Hat", 1957);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (2, "The Lorax", 1971);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (3, "1984", 1949);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (3, "Animal Farm", 1945);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (4, "Harry Potter and the Sorcerer's Stone",1997);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (4, "The Cuckoo's Calling ",2013);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (4, "Troubled Blood", 2020);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (5, "Blaze", 2007);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (5, "The Long Walk", 1979);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (4, "The Tales of Beedle the Bard", 2008);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (2, "Green Eggs and Ham", 1960);
+INSERT INTO books (author_id, title, release_year) 
+   VALUES (2, "Fox in Sox", 1965);
+   
+SELECT * FROM authors;
+
+SELECT pen_name, title
+FROM authors
+LEFT OUTER JOIN books
+ON authors.id = books.author_id;
