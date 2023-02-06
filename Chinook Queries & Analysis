@@ -1,0 +1,39 @@
+We're going to work with a dataset called chinook, which represents a digital media store 
+and includes tables for artists, albums, media tracks, invoices, and customers.
+
+--How many customers outside the U.S.?
+SELECT COUNT(*) FROM chinook.customers
+WHERE country <> 'USA'
+
+--Who is the head manager of chinook?
+SELECT * FROM chinook.employees AS emp
+WHERE emp.title LIKE '%Manager'
+AND emp.ReportsTo IS NULL
+
+--What's the average price of the items invoiced?
+SELECT avg(UnitPrice) AS avg_price
+FROM chinook.invoice_items 
+
+--How much revenue was made in January 2010?
+SELECT SUM(Quantity*UnitPrice) AS Revenue
+FROM chinook.invoice_items AS ii
+JOIN chinook.invoices AS i
+ON ii.invoiceid = i.invoiceid
+WHERE i.invoicedate LIKE '2010-01-%'
+
+
+--Use a subquery to show how many heavy metal tracks were invoiced.
+--Note: heavy metal has genreid 13
+SELECT COUNT(invoiceid) FROM invoice_items 
+WHERE trackid IN(SELECT trackid FROM tracks
+WHERE genreid = '13')
+
+--Show the length of each song and create a column that states if it's short,long,or average.
+SELECT name,milliseconds,
+ CASE WHEN milliseconds > 400000 THEN 'Long'
+      WHEN milliseconds < 380000 THEN 'Short'
+      ELSE 'Average'
+    END AS 'Song Length'
+FROM tracks
+GROUP BY milliseconds 
+
